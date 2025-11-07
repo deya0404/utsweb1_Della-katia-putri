@@ -12,7 +12,24 @@ $kode_barang  = ["B01", "B02", "B03", "B04", "B05"];
 $nama_barang  = ["Susu", "Snack", "Roti", "Sabun", "Teh"];
 $harga_barang = [15000, 10000, 12000, 8000, 6000];
 
+// Data belanja acak
+$beli = [];
+$grandtotal = 0;
 
+for ($i = 0; $i < 5; $i++) {
+    $index = rand(0, count($kode_barang) - 1);
+    $jumlah = rand(1, 5);
+    $total = $harga_barang[$index] * $jumlah;
+    $grandtotal += $total;
+
+    $beli[] = [
+        "kode" => $kode_barang[$index],
+        "nama" => $nama_barang[$index],
+        "harga" => $harga_barang[$index],
+        "jumlah" => $jumlah,
+        "total" => $total
+    ];
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -129,7 +146,12 @@ $harga_barang = [15000, 10000, 12000, 8000, 6000];
             background-color: #f1f2f6;
         }
 
-
+        .total {
+            text-align: right;
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 15px;
+        }
     </style>
 </head>
 
@@ -157,9 +179,19 @@ $harga_barang = [15000, 10000, 12000, 8000, 6000];
                 <th>Kode Barang</th>
                 <th>Nama Barang</th>
                 <th>Harga</th>
+                <th>Jumlah</th>
 
             </tr>
 
+            <?php foreach ($beli as $item): ?>
+                <tr>
+                    <td><?= htmlspecialchars($item["kode"]) ?></td>
+                    <td><?= htmlspecialchars($item["nama"]) ?></td>
+                    <td>Rp <?= number_format($item["harga"], 0, ',', '.') ?></td>
+                    <td><?= $item["jumlah"] ?></td>
+                    
+                </tr>
+            <?php endforeach; ?>
         </table>
 
     </div>
