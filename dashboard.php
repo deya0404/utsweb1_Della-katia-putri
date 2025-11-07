@@ -180,7 +180,7 @@ for ($i = 0; $i < 5; $i++) {
                 <th>Nama Barang</th>
                 <th>Harga</th>
                 <th>Jumlah</th>
-
+                <th>Total</th>
             </tr>
 
             <?php foreach ($beli as $item): ?>
@@ -189,7 +189,7 @@ for ($i = 0; $i < 5; $i++) {
                     <td><?= htmlspecialchars($item["nama"]) ?></td>
                     <td>Rp <?= number_format($item["harga"], 0, ',', '.') ?></td>
                     <td><?= $item["jumlah"] ?></td>
-                    
+                    <td>Rp <?= number_format($item["total"], 0, ',', '.') ?></td>
                 </tr>
             <?php endforeach; ?>
         </table>
