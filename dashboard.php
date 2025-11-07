@@ -194,6 +194,9 @@ for ($i = 0; $i < 5; $i++) {
             <?php endforeach; ?>
         </table>
 
+        <p class="total">Total Belanja:
+            <span style="color:#0A0301FF;">Rp <?= number_format($grandtotal, 0, ',', '.') ?></span>
+        </p>
     </div>
 
 </body>
